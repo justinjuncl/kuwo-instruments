@@ -1,6 +1,5 @@
-# photo-diary
-A KWEB Assignment
+# kuwo-instruments
 
-Hosted on [photo-diary.herokuapp.com](http://photo-diary.herokuapp.com/).
+Hosted on [kuwo-instruments.herokuapp.com](https://kuwo-instruments.herokuapp.com/).
 
 Password: kweb

@@ -14,7 +14,13 @@
 	<nav class="navbar navbar-fixed-top navbar-default">
 		<div class="container">
 			<a class="navbar-brand" href="/">Photo Diary</a>
-			<button id="new-post-button" class="btn btn-primary" onclick="getForm()">New Post</button>
+			<button id="new-post-button" class="btn btn-primary" onclick="getForm()">
+				<% if (loggedIn) { %>
+					New Post
+				<% } else { %>
+					Log In
+				<% } %>
+			</button>
 		</div>
 		<div class="container">
 			<div id="form-container" class="collapse"></div>	

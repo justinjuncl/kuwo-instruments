@@ -16,7 +16,7 @@ module.exports = function (app) {
 	app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 	app.use(session({
-		secret: 'KWEB',
+		secret: 'KUWO',
 		cookie: { maxAge: 1000 * 60 * 60 },
 		resave: true,
 		saveUninitialized: true

@@ -11,6 +11,7 @@ module.exports = {
 				posts: posts
 			});
 		});
+		res.locals.loggedIn = req.session.loggedIn;
 	},
 
 	findByID: function (req, res) {
