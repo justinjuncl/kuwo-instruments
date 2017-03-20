@@ -18,7 +18,7 @@
 	</thead>
 	<tbody>
     <% posts.forEach( function (post) { %>
-    	<tr class="clicky" data-href="/edit/<%= post._id %>">
+    	<tr data-href="/edit/<%= post._id %>">
     	
         	<td><%= post.inst %></td>
 			<td><%= post.instType %></td>
@@ -34,7 +34,7 @@
 			<td><%= post.extra %></td>
 			<td>
 
-<!-- <img alt="<%= post.inst %>" src="<%= post.image %>"/> -->
+<img alt="<%= post.inst %>" src="<%= post.image %>"/>
 
 			</td>
         </tr>

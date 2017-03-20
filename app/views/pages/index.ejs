@@ -31,6 +31,7 @@
 			<h2>악기 검색하기</h2>
 		</div>
 		<select class="form-control">
+			<option disabled selected value> -- 악기 선택 -- </option>
 			<% insts.forEach( function (inst) { %>
 		    <option><%= inst %></option>
 			<% }); %>

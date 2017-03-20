@@ -12,10 +12,10 @@ function postAJAX ( url, data, callback ) {
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	// xhr.onload = function () {
-	// 	if ( 200 <= xhr.status && xhr.status < 400 )
-	// 		callback( xhr.responseText );
-	// }
+	xhr.onload = function () {
+		if ( 200 <= xhr.status && xhr.status < 400 )
+			callback( xhr.responseText );
+	}
 	if ( callback )
 	    xhr.onload = callback.bind(xhr); 
 	xhr.send(data);
@@ -63,11 +63,33 @@ function postForm () {
 	var inputs = document.getElementsByTagName("input");
 	var elements = [].slice.call(inputs);
 
+	var imgfileIndex = elements.indexOf(document.getElementById("image-file"))
+	elements.splice(imgfileIndex, 1);
+
+	elements.push(document.getElementById("image-preview"));
+
 	var data = elements.map(function(el) {
-        return encodeURIComponent(el.name) + '=' + encodeURIComponent(el.value);
+		if ( el.value )
+        	return encodeURIComponent(el.name) + '=' + encodeURIComponent(el.value);
+        else if ( el.src )
+        	return "image" + '=' + encodeURIComponent(el.src);
     }).join('&');
 
-	postAJAX("/posts", data);
+	postAJAX("/posts", data, function (data) {
+		window.location = "/";
+	});
+}
+
+function cancel () {
+	window.location = "/";
+}
+
+function postFormDelete () {
+
+	getAJAX("/delete/" + document.getElementById("idTag").value, function (data) {
+		window.location = "/";
+	})
+
 }
 
 
@@ -75,22 +97,15 @@ $("select").on( "change", function (event) {
 
 	getAJAX("/posts/" + event.target.value, function(data) {
 		document.getElementById("table-container").innerHTML = data;
-	});
 
-});
+		$("tbody tr").on( 'click', function (a) {
 
-$(document).ready(function() {
+			var url = $(this).data("href");
 
+			getAJAX(url, function (data) {
+				document.getElementById("form-container").innerHTML = data;
+			});
 
-	$(".clicky").on( 'click', function (a) {
-
-		console.log(a)
-
-		var url = $(this).data("href");
-		console.log(url);
-
-		getAJAX(url, function (data) {
-			document.getElementById("form-container").innerHTML = data;
 		});
 
 	});

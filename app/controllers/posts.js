@@ -8,7 +8,7 @@ module.exports = {
 
 			var list = [];
 
-			console.log(posts)
+			// console.log(posts)
 
 			list = posts.map(function(el) {
 				return el.inst;
@@ -16,7 +16,7 @@ module.exports = {
 				return self.indexOf(el) == pos;
 			});
 
-			console.log(list)
+			// console.log(list)
 
 			res.render('pages/index', {
 				layout: false,
@@ -42,8 +42,6 @@ module.exports = {
 	editByID: function (req, res) {
 
 		Post.findById(req.params.id, function (err, post) {
-
-
 			res.render('partials/form', {
 				layout: false,
 				post: post
@@ -53,40 +51,53 @@ module.exports = {
 	},
 
 	create: function (req, res) {
-		var newPost = new Post({
-			inst: req.body.inst,
-			instType: req.body.instType,
-			instNumb: req.body.instNumb,
-			manufact: req.body.manufact,
-			model: req.body.model,
-			serial: req.body.serial,
-			components: req.body.components,
-			needsRepair: req.body.needsRepair,
-			currUser: req.body.currUser,
-			useDate: req.body.useDate,
-			extra: req.body.extra,
-			image: req.body.image ? req.body.image.replace(/ /g, '+') : '',
-		});
 
-		Post.findById(req.body.id, function(err, post) {
-			if (!post ) {
-				newPost._id = req.body.id;
-				newPost.save();
-			} else {
-				var upsertData = newPost.toObject();
+		if ( req.body._id ) {
+			var newPost = new Post({
+				_id: req.body._id,
+				inst: req.body.inst,
+				instType: req.body.instType,
+				instNumb: req.body.instNumb,
+				manufact: req.body.manufact,
+				model: req.body.model,
+				serial: req.body.serial,
+				components: req.body.components,
+				needsRepair: req.body.needsRepair,
+				currUser: req.body.currUser,
+				useDate: req.body.useDate,
+				extra: req.body.extra,
+				image: req.body.image ? req.body.image.replace(/ /g, '+') : '',
+			});
 
-				Post.update({_id: req.body.id}, upsertData, {upsert: true}, function (err) {
-					res.redirect('/');
-				});
-			}
-		});
+			Post.findOneAndUpdate({_id: req.body._id}, newPost.toObject()).exec();
 
+		} else {
+			var newPost = new Post({
+				inst: req.body.inst,
+				instType: req.body.instType,
+				instNumb: req.body.instNumb,
+				manufact: req.body.manufact,
+				model: req.body.model,
+				serial: req.body.serial,
+				components: req.body.components,
+				needsRepair: req.body.needsRepair,
+				currUser: req.body.currUser,
+				useDate: req.body.useDate,
+				extra: req.body.extra,
+				image: req.body.image ? req.body.image.replace(/ /g, '+') : '',
+			});
+
+			newPost.save();
+		}
+
+
+		res.send({redirect: '/'})
 
 	},
 
 	deleteByID: function (req, res) {
-		Post.findByIDAndRemove(req.params.id, function (err, post) {
-			res.redirect('/');
+		Post.findByIdAndRemove(req.params.id, function (err, post) {
+			res.send({redirect: "/"});
 		});
 	}
 

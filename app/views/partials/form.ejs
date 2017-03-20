@@ -3,7 +3,7 @@
 		<h2>악기 편집하기</h2>
 	</div>
 
-	<input type="hidden" name="_id" value="<%= post._id %>"/>
+	<input id="idTag" type="hidden" name="_id" value="<%= post._id %>"/>
 
 	<div class="form-group row">
 		<label class="col-4 col-form-label">악기</label>
@@ -88,7 +88,9 @@
 		</div>
 	</div>
 	<div>
-		<button type="button" class="btn btn-primary" onclick="postForm()">Submit</button>
+		<button type="button" class="btn btn-primary" onclick="postForm()">Edit</button>
+		<button type="button" class="btn btn-danger" onclick="postFormDelete()">Delete</button>
+		<button type="button" class="btn btn-secondary" onclick="cancel()">Cancel</button>
 	</div>
 	<br>
 </form>
