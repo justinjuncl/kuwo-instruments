@@ -1,0 +1,44 @@
+<table id="posts-container" class="table">
+	<thead>
+		<tr>
+			<th>악기</th>
+			<th>분류</th>
+			<th>번호</th>
+			<th>제조사</th>
+			<th>모델명</th>
+			<th>씨리얼 넘버</th>
+			<th>상태</th>
+			<th>구성품</th>
+			<th>수리 필요 여부</th>
+			<th>현재 사용자</th>
+			<th>사용 시작 날짜</th>
+			<th>비고</th>
+			<th>사진</th>
+		</tr>
+	</thead>
+	<tbody>
+    <% posts.forEach( function (post) { %>
+    	<tr class="clicky" data-href="/edit/<%= post._id %>">
+    	
+        	<td><%= post.inst %></td>
+			<td><%= post.instType %></td>
+			<td><%= post.instNumb %></td>
+			<td><%= post.manufact %></td>
+			<td><%= post.model %></td>
+			<td><%= post.serial	%></td>
+			<td><%= post.status	%></td>
+			<td><%= post.components %></td>
+			<td><%= post.needsRepair %></td>
+			<td><%= post.currUser %></td>
+			<td><%= post.useDate %></td>
+			<td><%= post.extra %></td>
+			<td>
+
+<!-- <img alt="<%= post.inst %>" src="<%= post.image %>"/> -->
+
+			</td>
+        </tr>
+    <% }); %>
+
+    </tbody>
+</table>

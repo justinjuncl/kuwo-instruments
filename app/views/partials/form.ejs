@@ -1,17 +1,94 @@
-<form id="post-form">
-	<div id="labels">
-		<input id="image-file" type="file" name="imageFile" accept="image/*" onchange="previewImg()">
+<form id="form1">
+	<div class="col-12">
+		<h2>악기 편집하기</h2>
+	</div>
+
+	<input type="hidden" name="_id" value="<%= post._id %>"/>
+
+	<div class="form-group row">
+		<label class="col-4 col-form-label">악기</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="inst" value="<%= post.inst %>">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">분류</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="instType" value="<%= post.instType %>">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">번호</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="instNumb" value="<%= post.instNumb %>">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">제조사</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="manufact" value="<%= post.manufact %>">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">모델명</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="model" value="<%= post.model %>">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">씨리얼 넘버</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="serial" value="<%= post.serial	%>">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">상태</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="status" value="<%= post.status	%>">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">구성품</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="components" value="<%= post.components %>">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">수리 필요 여부</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="needsRepair" value="<%= post.needsRepair %>">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">현재 사용자</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="currUser" value="<%= post.currUser %>">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">사용 날짜 시작</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="useDate" value="<%= post.useDate %>">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">비고</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="extra" value="<%= post.extra %>">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">사진</label>
+		<div class="col-8">
+			<input id="image-file" type="file" name="imageFile" accept="image/*" onchange="previewImg()">
 		<label id="image-frame" for="image-file">
 		<div id="text-background">Choose an image</div>
-		<img id="image-preview" height="200"/></label>
-	</div>
-	
-	<div class="col-lg-12">
-		<div class="input-group">
-			<input id="caption" class="form-control" type="text" name="caption" placeholder="Caption">
-	      <span class="input-group-btn">
-			<button type="button" class="btn btn-secondary" onclick="postForm()">Submit</button>
-	      </span>
+		<img id="image-preview" height="200" width="200" alt="<%= post.inst %>" src="<%= post.image %>"/>
+		</label>
 		</div>
-    </div>
+	</div>
+	<div>
+		<button type="button" class="btn btn-primary" onclick="postForm()">Submit</button>
+	</div>
+	<br>
 </form>

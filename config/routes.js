@@ -5,7 +5,11 @@ module.exports = function (app) {
 
 	app.get('/', posts.findAll );
 
-	app.get('/posts/:id', posts.findByID );
+	app.get('/edit/:id', posts.editByID );
+
+	app.get('/delete/:id', posts.deleteByID );
+
+	app.get('/posts/:inst', posts.findByInst );
 
 	app.get('/form', function (req, res) {
 		if ( req.session.loggedIn ) {

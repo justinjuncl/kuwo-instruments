@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Photo Diary</title>
+	<title>KUWO Instruments</title>
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,37 +10,134 @@
 
 	<link rel="stylesheet" href="/styles/style.css">
 </head>
+
 <body>
 	<nav class="navbar navbar-fixed-top navbar-default">
 		<div class="container">
-			<a class="navbar-brand" href="/">Photo Diary</a>
-			<button id="new-post-button" class="btn btn-primary" onclick="getForm()">
-				<% if (loggedIn) { %>
-					New Post
-				<% } else { %>
-					Log In
-				<% } %>
-			</button>
+			<a class="navbar-brand" href="/">KUWO Intruments</a>
+			<!-- <% if (!loggedIn) { %>
+			<button id="new-post-button" class="btn btn-primary" onclick="getForm()">Log In</button>
+			<% } %> -->
 		</div>
-		<div class="container">
+		<!-- <div class="container">
 			<div id="form-container" class="collapse"></div>	
-		</div>
+		</div> -->
 	</nav>
 
 	<div class="container">
-		<div id="posts-container" class="card-columns">
-		    <% posts.forEach( function (post) { %>
-		        <div class="card">
-			        <a href="/posts/<%= post._id %>">
-						<img class="card-img-top" alt="Image <%= post._id %>" src="<%= post.image %>"/>
-			        </a>
-					<div class="card-block">
-						<p class="card-text"><%= post.caption %></p>
-					</div>
-				</div>
-		    <% }); %>
+
+	<div>
+		<div class="col-12">
+			<h2>악기 검색하기</h2>
+		</div>
+		<select class="form-control">
+			<% insts.forEach( function (inst) { %>
+		    <option><%= inst %></option>
+			<% }); %>
+		</select>
+
+	</div>
+
+<br>
+
+<div id="table-container"></div>
+
+<br>	
+
+<div id="form-container">
+
+<form id="form1">
+	<div class="col-12">
+		<h2>악기 추가하기</h2>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">악기</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="inst">
 		</div>
 	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">분류</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="instType">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">번호</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="instNumb">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">제조사</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="manufact">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">모델명</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="model">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">씨리얼 넘버</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="serial">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">상태</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="status">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">구성품</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="components">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">수리 필요 여부</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="needsRepair">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">현재 사용자</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="currUser">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">사용 날짜 시작</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="useDate">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">비고</label>
+		<div class="col-8">
+			<input class="form-control" type="text" name="extra">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-4 col-form-label">사진</label>
+		<div class="col-8">
+			<input id="image-file" type="file" name="imageFile" accept="image/*" onchange="previewImg()">
+		<label id="image-frame" for="image-file">
+		<div id="text-background">Choose an image</div>
+		<img id="image-preview" height="200" width="200" /></label>
+		</div>
+	</div>
+	<div>
+		<button type="button" class="btn btn-primary" onclick="postForm()">Submit</button>
+	</div>
+	<br>
+</form>
+
+</div>
 
 </body>
 <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
