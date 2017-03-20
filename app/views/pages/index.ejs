@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Photo Diary</title>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+	<nav class="navbar navbar-fixed-top navbar-default">
+		<div class="container">
+			<a class="navbar-brand" href="/">Photo Diary</a>
+			<button id="new-post-button" class="btn btn-primary" onclick="getForm()">New Post</button>
+		</div>
+		<div class="container">
+			<div id="form-container" class="collapse"></div>	
+		</div>
+	</nav>
+
+	<div class="container">
+		<div id="posts-container" class="card-columns">
+		    <% posts.forEach( function (post) { %>
+		        <div class="card">
+			        <a href="/posts/<%= post._id %>">
+						<img class="card-img-top" alt="Image <%= post._id %>" src="<%= post.image %>"/>
+			        </a>
+					<div class="card-block">
+						<p class="card-text"><%= post.caption %></p>
+					</div>
+				</div>
+		    <% }); %>
+		</div>
+	</div>
+
+</body>
+<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
+<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/scripts/main.js"></script>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "kuwo-instruments",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "ejs": "^2.3.3",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "mongoose": "^4.4.12"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Justin Jun",
+  "license": "MIT"
+}

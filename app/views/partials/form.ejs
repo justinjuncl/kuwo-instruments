@@ -1,0 +1,17 @@
+<form id="post-form">
+	<div id="labels">
+		<input id="image-file" type="file" name="imageFile" accept="image/*" onchange="previewImg()">
+		<label id="image-frame" for="image-file">
+		<div id="text-background">Choose an image</div>
+		<img id="image-preview" height="200"/></label>
+	</div>
+	
+	<div class="col-lg-12">
+		<div class="input-group">
+			<input id="caption" class="form-control" type="text" name="caption" placeholder="Caption">
+	      <span class="input-group-btn">
+			<button type="button" class="btn btn-secondary" onclick="postForm()">Submit</button>
+	      </span>
+		</div>
+    </div>
+</form>
