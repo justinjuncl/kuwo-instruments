@@ -9,7 +9,7 @@ var PostSchema = new mongoose.Schema({
 	serial	: String,
 	status	: String,
 	components: String,
-	needsRepair: Boolean,
+	needsRepair: String,
 	currUser: String,
 	useDate : String,
 	extra	: String,

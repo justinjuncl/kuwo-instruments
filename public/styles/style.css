@@ -11,8 +11,20 @@ td {
 	vertical-align: center;
 }
 
-tbody > tr {
+th {
+	text-align: center;
+}
+
+tbody > tr{
 	cursor: pointer;
+}
+
+th, td {
+	background: #F7F7F7;
+}
+
+tr:hover td {
+	background: #E6E6E6;
 }
 
 input {
@@ -60,6 +72,7 @@ body>.container {
 #image-frame {
 	border-radius: 0.25rem;
 	border: 2px dashed #BBB;
+	cursor: pointer;
 }
 
 #new-post-button {

@@ -29,7 +29,7 @@ module.exports = {
 
 	findByInst: function (req, res) {
 
-		Post.find({"inst": req.params.inst}, function (err, posts) {
+		Post.find({"inst": req.params.inst}).sort('instNumb').exec( function (err, posts) {
 			res.render('partials/table', {
 				layout: false,
 				posts: posts
@@ -86,6 +86,14 @@ module.exports = {
 				extra: req.body.extra,
 				image: req.body.image ? req.body.image.replace(/ /g, '+') : '',
 			});
+
+			// var upsertData = newPost.toObject();
+
+			// delete upsertData._id;
+
+			// Post.update({_id: req.body._id}, upsertData, {upsert: true, setDefaultsOnInsert: true}, function(err) {
+			// 	if (err) throw err;
+			// });
 
 			newPost.save();
 		}
