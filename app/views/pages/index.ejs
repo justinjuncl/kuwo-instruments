@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>KUWO Instruments</title>
+	<title>KUWO 악기대장</title>
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
 <body>
 	<nav class="navbar navbar-fixed-top navbar-default">
 		<div class="container">
-			<a class="navbar-brand" href="/">KUWO Intruments</a>
+			<a class="navbar-brand" href="/">KUWO 악기대장</a>
 			<!-- <% if (!loggedIn) { %>
 			<button id="new-post-button" class="btn btn-primary" onclick="getForm()">Log In</button>
 			<% } %> -->
@@ -29,19 +29,21 @@
 	<div>
 		<div class="col-12">
 			<h2>악기 검색하기</h2>
-		</div>
 		<select class="form-control">
-			<option disabled selected value> -- 악기 선택 -- </option>
+			<option disabled selected value> -- 악기 검색 -- </option>
 			<% insts.forEach( function (inst) { %>
 		    <option><%= inst %></option>
 			<% }); %>
 		</select>
+		
+		<div id="table-container"></div>
+
+		</div>
 
 	</div>
 
 <br>
 
-<div id="table-container"></div>
 
 <br>	
 
@@ -50,7 +52,6 @@
 <form id="form1">
 	<div class="col-12">
 		<h2>악기 추가하기</h2>
-	</div>
 	<div class="form-group row">
 		<label class="col-4 col-form-label">악기</label>
 		<div class="col-8">
@@ -128,13 +129,16 @@
 		<div class="col-8">
 			<input id="image-file" type="file" name="imageFile" accept="image/*" onchange="previewImg()">
 		<label id="image-frame" for="image-file">
-		<div id="text-background">Choose an image</div>
+		<div id="text-background">사진을 선택하시오</div>
 		<img id="image-preview" height="200" width="200" /></label>
 		</div>
 	</div>
 	<div>
-		<button type="button" class="btn btn-primary" onclick="postForm()">Submit</button>
+		<button type="button" class="btn btn-primary" onclick="postForm()">확인</button>
 	</div>
+
+	</div>
+
 	<br>
 </form>
 
