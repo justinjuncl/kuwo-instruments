@@ -53,8 +53,7 @@ module.exports = {
 	create: function (req, res) {
 
 		if ( req.body._id ) {
-			var newPost = new Post({
-				_id: req.body._id,
+			var data = {
 				inst: req.body.inst,
 				instType: req.body.instType,
 				instNumb: req.body.instNumb,
@@ -67,9 +66,9 @@ module.exports = {
 				useDate: req.body.useDate,
 				extra: req.body.extra,
 				image: req.body.image ? req.body.image.replace(/ /g, '+') : '',
-			});
+			};
 
-			Post.findOneAndUpdate({_id: req.body._id}, newPost.toObject()).exec();
+			Post.update({ _id: req.body._id}, { $set: data });
 
 		} else {
 			var newPost = new Post({
@@ -86,14 +85,6 @@ module.exports = {
 				extra: req.body.extra,
 				image: req.body.image ? req.body.image.replace(/ /g, '+') : '',
 			});
-
-			// var upsertData = newPost.toObject();
-
-			// delete upsertData._id;
-
-			// Post.update({_id: req.body._id}, upsertData, {upsert: true, setDefaultsOnInsert: true}, function(err) {
-			// 	if (err) throw err;
-			// });
 
 			newPost.save();
 		}
