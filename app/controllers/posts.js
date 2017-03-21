@@ -60,6 +60,7 @@ module.exports = {
 				manufact: req.body.manufact,
 				model: req.body.model,
 				serial: req.body.serial,
+				status: req.body.status,
 				components: req.body.components,
 				needsRepair: req.body.needsRepair,
 				currUser: req.body.currUser,
@@ -68,7 +69,7 @@ module.exports = {
 				image: req.body.image ? req.body.image.replace(/ /g, '+') : '',
 			};
 
-			Post.update({ _id: req.body._id}, { $set: data });
+			Post.update({ _id: req.body._id}, { $set: data }, function(a, b) {});
 
 		} else {
 			var newPost = new Post({
@@ -78,6 +79,7 @@ module.exports = {
 				manufact: req.body.manufact,
 				model: req.body.model,
 				serial: req.body.serial,
+				status: req.body.status,
 				components: req.body.components,
 				needsRepair: req.body.needsRepair,
 				currUser: req.body.currUser,
