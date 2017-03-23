@@ -9,6 +9,7 @@ h2 {
 
 td {
 	vertical-align: center;
+	table-layout: fixed; width: 100%;
 }
 
 th {

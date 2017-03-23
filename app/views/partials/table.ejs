@@ -1,19 +1,20 @@
+<div class="table-responsive">
 <table id="posts-container" class="table">
 	<thead>
 		<tr>
-			<th>악기</th>
-			<th>분류</th>
-			<th>번호</th>
-			<th>제조사</th>
-			<th>모델명</th>
-			<th>씨리얼 넘버</th>
-			<th>상태</th>
-			<th>구성품</th>
-			<th>수리 필요 여부</th>
-			<th>현재 사용자</th>
-			<th>사용 시작 날짜</th>
-			<th>비고</th>
-			<th>사진</th>
+			<th style="min-width: 60px;">악기</th>
+			<th style="min-width: 60px;">분류</th>
+			<th style="min-width: 60px;">번호</th>
+			<th style="min-width: 70px;">제조사</th>
+			<th style="min-width: 70px;">모델명</th>
+			<th style="min-width: 100px;">씨리얼 넘버</th>
+			<th style="min-width: 80px;">상태</th>
+			<th style="min-width: 70px;">구성품</th>
+			<th style="min-width: 100px;">수리 필요 여부</th>
+			<th style="min-width: 100px;">현재 사용자</th>
+			<th style="min-width: 100px;">사용 시작 날짜</th>
+			<th style="min-width: 100px;">비고</th>
+			<th style="min-width: 60px;">사진</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -33,12 +34,13 @@
 			<td><%= post.useDate %></td>
 			<td><%= post.extra %></td>
 			<td>
-
-<img alt="<%= post.inst %>" src="<%= post.image %>"/>
-
+		<% if ( post.image != "http://kuwo-instruments.herokuapp.com/" || !post.image ) { %>
+			<img alt="<%= post.inst %>" src="<%= post.image %>"/>
+		<% } %>
 			</td>
         </tr>
     <% }); %>
 
     </tbody>
 </table>
+</div>
