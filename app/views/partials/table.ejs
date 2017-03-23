@@ -2,18 +2,18 @@
 <table id="posts-container" class="table">
 	<thead>
 		<tr>
-			<th style="min-width: 60px;">악기</th>
+			<th style="min-width: 100px;">악기</th>
 			<th style="min-width: 60px;">분류</th>
 			<th style="min-width: 60px;">번호</th>
 			<th style="min-width: 70px;">제조사</th>
 			<th style="min-width: 70px;">모델명</th>
 			<th style="min-width: 100px;">씨리얼 넘버</th>
-			<th style="min-width: 80px;">상태</th>
+			<th style="min-width: 100px;">상태</th>
 			<th style="min-width: 70px;">구성품</th>
-			<th style="min-width: 100px;">수리 필요 여부</th>
+			<th style="min-width: 120px;">수리 필요 여부</th>
 			<th style="min-width: 100px;">현재 사용자</th>
 			<th style="min-width: 100px;">사용 시작 날짜</th>
-			<th style="min-width: 100px;">비고</th>
+			<th style="min-width: 120px;">비고</th>
 			<th style="min-width: 60px;">사진</th>
 		</tr>
 	</thead>
@@ -34,7 +34,7 @@
 			<td><%= post.useDate %></td>
 			<td><%= post.extra %></td>
 			<td>
-		<% if ( post.image != "http://kuwo-instruments.herokuapp.com/" || !post.image ) { %>
+		<% if ( post.image != "" ) { %>
 			<img alt="<%= post.inst %>" src="<%= post.image %>"/>
 		<% } %>
 			</td>
