@@ -53,7 +53,14 @@ function previewImg() {
 	}, false);
 
 	if (imageFile) {
-		reader.readAsDataURL(imageFile);
+
+		ImageTools.resize(imageFile, {
+			width: 800,
+			height: 800,
+		}, function (blob, didItResize) {
+			reader.readAsDataURL(blob);
+		})
+
 	}
 }
 
