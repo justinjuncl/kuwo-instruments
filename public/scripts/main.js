@@ -55,8 +55,8 @@ function previewImg() {
 	if (imageFile) {
 
 		ImageTools.resize(imageFile, {
-			width: 800,
-			height: 800,
+			width: 1200,
+			height: 1200,
 		}, function (blob, didItResize) {
 			reader.readAsDataURL(blob);
 		})
