@@ -54,12 +54,9 @@ function previewImg() {
 
 	if (imageFile) {
 
-		ImageTools.resize(imageFile, {
-			width: 1200,
-			height: 1200,
-		}, function (blob, didItResize) {
-			reader.readAsDataURL(blob);
-		})
+		loadImage(imageFile, function (img) {
+			reader.readAsDataURL(img)
+		}, {maxWidth: 1200, maxHeight: 1200, orientation: true})
 
 	}
 }
