@@ -7,7 +7,9 @@
     "ejs": "^2.3.3",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
-    "mongoose": "^4.4.12"
+    "mongoose": "^4.4.12",
+    "multer": "^1.3.0",
+    "path": "*"
   },
   "scripts": {
     "start": "node app.js"

@@ -11,7 +11,7 @@ function getAJAX ( url, callback ) {
 function postAJAX ( url, data, callback ) {
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.setRequestHeader("Co체tent-type", "application/x-www-form-urlencoded");
 	xhr.onload = function () {
 		if ( 200 <= xhr.status && xhr.status < 400 )
 			callback( xhr.responseText );
@@ -99,7 +99,12 @@ function postFormDelete () {
 
 $("select").on( "change", function (event) {
 
-	getAJAX("/posts/" + event.target.value, function(data) {
+	var ajaxURL;
+
+	if (event.target.value === '-- 전체 --') ajaxURL = '/all';
+	else ajaxURL = "/posts/" + event.target.value;
+
+	getAJAX(ajaxURL, function(data) {
 		document.getElementById("table-container").innerHTML = data;
 
 		$("tbody tr").on( 'click', function (a) {

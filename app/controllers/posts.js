@@ -1,6 +1,11 @@
 var mongoose = require('mongoose'),
 	Post = mongoose.model('Post');
 
+var path = require('path'),
+	multer = require('multer');
+
+var fs = require('fs');
+
 module.exports = {
 
 	findAll: function (req, res) {
@@ -16,6 +21,8 @@ module.exports = {
 				return self.indexOf(el) == pos;
 			});
 
+			list.push('-- 전체 --');
+
 			// console.log(list)
 
 			res.render('pages/index', {
@@ -30,6 +37,18 @@ module.exports = {
 	findByInst: function (req, res) {
 
 		Post.find({"inst": req.params.inst}).sort('instNumb').exec( function (err, posts) {
+			res.render('partials/table', {
+				layout: false,
+				posts: posts
+			});
+		});
+		res.locals.loggedIn = req.session.loggedIn;
+
+	},
+
+	loadAll: function (req, res) {
+
+		Post.find(function (err, posts) {
 			res.render('partials/table', {
 				layout: false,
 				posts: posts

@@ -11,6 +11,8 @@ module.exports = function (app) {
 
 	app.get('/posts/:inst', posts.findByInst );
 
+	app.get('/all', posts.loadAll) ;
+
 	app.get('/form', function (req, res) {
 		if ( req.session.loggedIn ) {
 			res.render('partials/form.ejs');
